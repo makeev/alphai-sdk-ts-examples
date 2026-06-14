@@ -1,0 +1,37 @@
+{
+  "name": "alphai-sdk-examples",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Runnable TypeScript examples for alphai-sdk — relevance-scored financial news, ticker sentiment, and SEC Form 4 insider data.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "quickstart": "tsx examples/01-quickstart.ts",
+    "paginate": "tsx examples/02-paginate.ts",
+    "trending": "tsx examples/03-trending.ts",
+    "dashboard": "tsx examples/04-ticker-dashboard.ts",
+    "insider": "tsx examples/05-insider.ts",
+    "errors": "tsx examples/06-errors-and-ratelimits.ts",
+    "symbols": "tsx examples/07-symbols.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "alphai",
+    "alphai-sdk",
+    "financial-news",
+    "sentiment",
+    "insider-trading",
+    "examples"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "alphai-sdk": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.21",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
