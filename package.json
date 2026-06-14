@@ -1,5 +1,5 @@
 {
-  "name": "alphai-sdk-examples",
+  "name": "alphai-sdk-ts-examples",
   "version": "0.1.0",
   "private": true,
   "description": "Runnable TypeScript examples for alphai-sdk — relevance-scored financial news, ticker sentiment, and SEC Form 4 insider data.",

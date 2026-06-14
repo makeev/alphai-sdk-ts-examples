@@ -1,4 +1,4 @@
-# alphai-sdk-examples
+# alphai-sdk-ts-examples
 
 Runnable TypeScript examples for [**alphai-sdk**](https://www.npmjs.com/package/alphai-sdk) —
 the typed client for the [AlphaAI](https://alphai.io) REST API: relevance-scored,
