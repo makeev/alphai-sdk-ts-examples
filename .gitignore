@@ -5,6 +5,10 @@ node_modules/
 .env
 .env.local
 
+# alert bot dedup state (local runtime data)
+.alerts-state.json
+*.state.json
+
 # logs / OS noise
 *.log
 .DS_Store

@@ -13,5 +13,5 @@
     "verbatimModuleSyntax": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["examples"]
+  "include": ["examples", "alerts"]
 }

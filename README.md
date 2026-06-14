@@ -66,6 +66,68 @@ npm run typecheck
 
 ---
 
+## A real app: the news-alert bot (`alerts/`)
+
+A small, deployable service that turns the SDK into a **financial-news alerting
+bot**. Each poll it fetches the feed for your watchlist, keeps only the unseen
+high-relevance stories, and pushes them to **Telegram, Slack, and/or any
+webhook** — deduplicating across runs so nothing is delivered twice.
+
+```bash
+# Poll once (cron / GitHub Actions friendly), console output:
+npm run alerts
+
+# Long-lived: poll every POLL_INTERVAL_SECONDS until Ctrl-C:
+npm run alerts:watch
+
+# See it format real alerts right now, without any tokens:
+npm run alerts -- --dry-run --backfill=3
+```
+
+**Channels** are configured by env (see [`.env.example`](.env.example)); each is
+active only when its variables are set. Console output is always on for local
+visibility, and `--dry-run` keeps everything local.
+
+| Channel | How to enable |
+| --- | --- |
+| **Console** | always on (and the only channel under `--dry-run`) |
+| **Telegram** | `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` (Bot API `sendMessage`, HTML) |
+| **Slack** | `SLACK_WEBHOOK_URL` (Incoming Webhook, `blocks` + fallback text) |
+| **Webhook** | `WEBHOOK_URL` (POSTs `{ "event": "alphai.news.alert", "alert": {…} }`) |
+
+**Tuning** (all optional, with defaults):
+
+| Env | Default | Meaning |
+| --- | --- | --- |
+| `WATCHLIST` | `NVDA,AAPL,MSFT,TSLA` | Tickers to watch, or `trending` for whole-market mode |
+| `MIN_RELEVANCE` | `7` | Minimum relevance score (1–10) to alert |
+| `CATEGORIES` / `EXCLUDE_CATEGORIES` | — | Restrict / drop news categories |
+| `PER_TICKER_LIMIT` | `5` | Max articles per ticker per poll |
+| `POLL_INTERVAL_SECONDS` | `300` | Cadence in `--watch` mode |
+| `STATE_FILE` | `.alerts-state.json` | Where the seen-uid dedup state is stored |
+| `FIRST_RUN_BACKFILL` | `0` | On first run, deliver N newest; the rest seed silently |
+
+**First-run behavior.** With no state file yet, the bot establishes a *baseline*
+— it marks current articles as seen **without** alerting, so you don't get blasted
+with the backlog. Pass `--backfill=N` (or `FIRST_RUN_BACKFILL`) to deliver the N
+newest on that first run instead.
+
+How the pieces fit:
+
+```
+alerts/
+├── index.ts      # orchestration: poll → filter unseen → deliver → persist; once or --watch
+├── config.ts     # env + CLI flags → typed AppConfig
+├── store.ts      # SeenStore: capped, persisted set of delivered article UIDs (dedup)
+├── format.ts     # RichNewsArticle → normalized Alert → per-channel renderers
+└── notifiers.ts  # Console / Slack / Telegram / Webhook (native fetch, zero deps)
+```
+
+Deploy it on a cron (`npm run alerts` every few minutes) or run `npm run
+alerts:watch` as a long-lived process under your supervisor of choice.
+
+---
+
 ## The 30-second version
 
 ```ts

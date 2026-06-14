@@ -15,6 +15,8 @@
     "insider": "tsx examples/05-insider.ts",
     "errors": "tsx examples/06-errors-and-ratelimits.ts",
     "symbols": "tsx examples/07-symbols.ts",
+    "alerts": "tsx alerts/index.ts",
+    "alerts:watch": "tsx alerts/index.ts --watch",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
