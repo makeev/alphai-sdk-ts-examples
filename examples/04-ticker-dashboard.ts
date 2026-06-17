@@ -25,9 +25,17 @@ const [detail, sent, insider, news] = await Promise.all([
 
 // — Company —
 heading("Company");
-console.log(`  ${c.bold(detail.name)} · ${c.dim(`${detail.exchange || "?"} · ${detail.asset_type || "?"}`)}`);
+// Market line carries the multi-market metadata: exchange · asset_type, plus
+// country/currency for foreign & crypto listings.
+const mkt = [detail.exchange || "?", detail.asset_type || "?"];
+if (detail.country) mkt.push(detail.country);
+if (detail.currency) mkt.push(detail.currency);
+console.log(`  ${c.bold(detail.name)} · ${c.dim(mkt.join(" · "))}`);
 if (detail.sector || detail.industry) {
   console.log(`  ${c.dim(`${detail.sector ?? ""}${detail.industry ? " / " + detail.industry : ""}`)}`);
+}
+if (detail.supports_insider === false) {
+  console.log(c.dim("  no SEC Form 4 insider data (crypto/foreign listing)"));
 }
 if (detail.website) console.log(`  ${c.blue(detail.website)}`);
 
