@@ -17,7 +17,7 @@ heading(`Top news for ${symbol} (relevance ≥ 7)`);
 // One page of the main feed, newest first, filtered to a single ticker.
 const page = await client.news.list({
   symbol,
-  minRelevance: 7, // 1–10; the server defaults to 6
+  minRelevance: 7, // 1–10; the server defaults to 4
   collapseStories: true, // fold reprints of the same story into one
 });
 
