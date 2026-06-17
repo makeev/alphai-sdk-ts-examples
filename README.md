@@ -166,8 +166,10 @@ const [detail, sentiment, insider] = await Promise.all([
   Alias it when importing: `import type { Symbol as AlphaSymbol } from "alphai-sdk";`
 - **Retries are automatic.** Idempotent GETs retry on 429 / 5xx / network errors
   with exponential backoff (configurable `maxRetries`, default 2; `0` to disable).
-- **Rate limits** are per account, hourly, sliding window (Free 100 / Basic 1000 /
-  Pro 10000 req/hr). Read `client.lastRateLimit` after any keyed call.
+- **Rate limits** are per account and two-layer — a per-minute burst plus a
+  per-day volume cap (Free 20/min + 100/day · Basic 60/min + 10,000/day ·
+  Pro 300/min + 100,000/day). Read `client.lastRateLimit` after any keyed call;
+  the `X-RateLimit-*` headers report the daily layer, which resets at 00:00 UTC.
 - **Never commit your key.** `.env` is git-ignored; only `.env.example` is tracked.
 
 ## Links
