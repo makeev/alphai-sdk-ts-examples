@@ -168,7 +168,7 @@ const [detail, sentiment, insider] = await Promise.all([
   with exponential backoff (configurable `maxRetries`, default 2; `0` to disable).
 - **Rate limits** are per account and two-layer — a per-minute burst plus a
   per-day volume cap (Free 20/min + 100/day · Basic 60/min + 10,000/day ·
-  Pro 300/min + 100,000/day). Read `client.lastRateLimit` after any keyed call;
+  Pro 150/min + 100,000/day). Read `client.lastRateLimit` after any keyed call;
   the `X-RateLimit-*` headers report the daily layer, which resets at 00:00 UTC.
 - **Never commit your key.** `.env` is git-ignored; only `.env.example` is tracked.
 
