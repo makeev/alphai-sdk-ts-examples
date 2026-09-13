@@ -1,7 +1,7 @@
 # alphai-sdk-ts-examples
 
 Runnable TypeScript examples for [**alphai-sdk**](https://www.npmjs.com/package/alphai-sdk) —
-the typed client for the [AlphaAI](https://alphai.io) REST API: relevance-scored,
+the typed client for the [AlphAI](https://alphai.io) REST API: relevance-scored,
 ticker-linked financial news plus SEC Form 4 insider data.
 
 Each script is small, self-contained, and runs against the live API. Together they
@@ -175,7 +175,7 @@ const [detail, sentiment, insider] = await Promise.all([
 ## Links
 
 - SDK on npm — https://www.npmjs.com/package/alphai-sdk
-- AlphaAI — https://alphai.io
+- AlphAI — https://alphai.io
 - API keys — https://alphai.io/account/api-keys
 
 ## License

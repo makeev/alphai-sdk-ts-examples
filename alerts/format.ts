@@ -18,7 +18,7 @@ export interface Alert {
   publishedAt: string;
   sentiment?: string;
   summary: string;
-  /** All validated tickers AlphaAI linked to the story. */
+  /** All validated tickers AlphAI linked to the story. */
   tickers: string[];
 }
 

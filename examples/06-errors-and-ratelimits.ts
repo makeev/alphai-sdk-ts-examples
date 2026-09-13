@@ -8,7 +8,7 @@
  * the client parses from `X-RateLimit-*` headers after every keyed response.
  */
 import {
-  AlphaAI,
+  AlphAI,
   NotFoundError,
   RateLimitError,
   AuthenticationError,

@@ -1,6 +1,6 @@
 /**
  * Shared helpers for the examples: env loading, a client factory, tiny
- * zero-dependency ANSI helpers, and a few formatters for AlphaAI models.
+ * zero-dependency ANSI helpers, and a few formatters for AlphAI models.
  *
  * Nothing here is required to use the SDK — it just keeps the example scripts
  * focused on the API calls rather than on console plumbing.
@@ -73,7 +73,7 @@ export function heading(title: string): void {
 }
 
 /* --------------------------------------------------------------------------
- * Formatters for AlphaAI response models.
+ * Formatters for AlphAI response models.
  * ------------------------------------------------------------------------ */
 
 /** Color a 1–10 relevance score: green ≥8, yellow ≥6, gray below. */
@@ -111,7 +111,7 @@ export function when(iso: string): string {
 }
 
 /**
- * Format a monetary value WITHOUT losing precision. AlphaAI returns money as
+ * Format a monetary value WITHOUT losing precision. AlphAI returns money as
  * decimal strings on purpose (JS floats lose precision on large dollar
  * amounts), so we only insert thousands separators — never `parseFloat`.
  */

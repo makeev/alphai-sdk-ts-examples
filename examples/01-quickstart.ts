@@ -26,7 +26,7 @@ if (page.results.length === 0) {
 } else {
   page.results.forEach((article, i) => {
     printArticle(article, i + 1);
-    // Each article carries AlphaAI's per-ticker AI read of the story:
+    // Each article carries AlphAI's per-ticker AI read of the story:
     console.log(`    ${c.dim("AI view:")} ${sentiment(sentimentForTicker(article, symbol))}`);
   });
 }

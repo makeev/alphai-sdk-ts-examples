@@ -144,7 +144,7 @@ async function main(): Promise<void> {
   loadEnv();
   const config = loadConfig(process.argv);
 
-  let client: AlphaAI;
+  let client: AlphAI;
   try {
     client = new AlphaAI();
   } catch (err) {
